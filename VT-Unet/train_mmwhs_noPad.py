@@ -27,7 +27,7 @@ from vtunet.vision_transformer import VTUNet as ViT_seg
 from monai.visualize import plot_2d_or_3d_image
 torch.backends.cudnn.benchmark = False
 torch.backends.cudnn.enabled = False
-# torch.cuda.set_device(0)
+torch.cuda.set_device(0)
 
 parser = argparse.ArgumentParser(description='VTUNET BRATS 2021 Training')
 # DO not use data_aug argument this argument!!
@@ -412,5 +412,5 @@ def meandice(pred, label , num_class):
 if __name__ == '__main__':
     arguments = parser.parse_args()
     # os.environ['CUDA_VISIBLE_DEVICES'] = arguments.devices
-    torch.cuda.set_device("cuda:1")
+    torch.cuda.set_device(0)
     main(arguments)
