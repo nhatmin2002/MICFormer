@@ -129,8 +129,8 @@ def main(args):
             transforms.NormalizeIntensityd(keys="image", nonzero=True, channel_wise=True),
         ]
     )
-
-    full_train_dataset, l_val_dataset, bench_dataset = get_datasets_Aug(args.seed, "train" , train_transforms=train_transform , val_transforms=val_transform)
+    #get_datasets_Aug
+    full_train_dataset, l_val_dataset, bench_dataset = get_datasets_noPad(args.seed, "train" , train_transforms=train_transform , val_transforms=val_transform)
     train_loader = torch.utils.data.DataLoader(full_train_dataset, batch_size=args.batch_size, shuffle=True,
                                                num_workers=args.workers, pin_memory=False, drop_last=False)
     val_loader = torch.utils.data.DataLoader(l_val_dataset, batch_size=1, shuffle=False,
