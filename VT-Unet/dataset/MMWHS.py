@@ -478,9 +478,9 @@ def get_datasets_noPad(seed, on="train", fold_number=0, normalisation="minmax"):
 
 def get_datasets_Aug(seed, on="train", fold_number=0, normalisation="minmax",train_transforms = None ,val_transforms = None ):
     
-    patients_dir = sorted(glob("/kaggle/input/multi-modality-whole-heart-segmentation-data/ct_train/" + "/ct_*_image.nii"))
+    patients_dir = sorted(glob("/content/drive/MyDrive/data_heart_segmentation/ct_train/" + "/ct_*_image.nii"))
 
-    kfold = KFold(2, shuffle=True, random_state=seed)
+    kfold = KFold(5, shuffle=True, random_state=seed)
     splits = list(kfold.split(patients_dir))
     train_idx, val_idx = splits[fold_number]
     len_val = len(val_idx)
