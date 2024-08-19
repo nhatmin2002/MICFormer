@@ -452,9 +452,9 @@ def get_datasets(seed, on="train", fold_number=0, normalisation="minmax"):
 
 def get_datasets_noPad(seed, on="train", fold_number=0, normalisation="minmax"):
     
-    patients_dir = sorted(glob("/home/fanxx/fxx/sdc/luoluo/MMWHS/MMWHS/ct_train/" + "/ct_*_image.nii.gz"))
+    patients_dir = sorted(glob("/kaggle/input/thunghiemdata/data/ct_train/" + "/ct_*_image.nii.gz"))
 
-    kfold = KFold(5, shuffle=True, random_state=seed)
+    kfold = KFold(2, shuffle=True, random_state=seed)
     splits = list(kfold.split(patients_dir))
     train_idx, val_idx = splits[fold_number]
     len_val = len(val_idx)
